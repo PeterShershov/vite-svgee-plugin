@@ -65,11 +65,11 @@
   },
   "devDependencies": {
     "@svgr/plugin-svgo": "^8.1.0",
-    "@types/node": "^26.2.0",
-    "@types/react": "^19.2.18",
-    "svgo": "^4.0.2",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "svgo": "^4.1.0",
     "typescript": "~7.0.2",
-    "vite": "^8.2.1",
+    "vite": "^8.3.4",
     "vite-plugin-svgr": "^5.2.0"
   }
 }
