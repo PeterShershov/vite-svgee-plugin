@@ -4,7 +4,7 @@ import { performance } from "node:perf_hooks";
 
 // ── Plugins ──────────────────────────────────────────────────────────
 
-import svgx from "../src/index.ts";
+import svgee from "../src/index.ts";
 import svgr from "vite-plugin-svgr";
 
 // ── Config ───────────────────────────────────────────────────────────
@@ -51,8 +51,8 @@ interface PluginEntry {
 }
 
 function buildPlugins(): PluginEntry[] {
-  const svgxWithSvgo = svgx();
-  const svgxNoSvgo = svgx({ svgo: false });
+  const svgeeWithSvgo = svgee();
+  const svgeeNoSvgo = svgee({ svgo: false });
   // vite-plugin-svgr checks this.meta.rolldownVersion to choose its JSX transform.
   // With rolldownVersion set it uses transformWithOxc (Rolldown/Vite 6+ path).
   // The classic transformWithEsbuild path is deprecated and requires a separate
@@ -62,11 +62,11 @@ function buildPlugins(): PluginEntry[] {
   // `caller: { defaultPlugins: [jsx] }` and @svgr/core's own DEFAULT_PLUGINS is
   // empty, so `svgr()` is the jsx-only row below. To compare SVGO against SVGO
   // we have to add @svgr/plugin-svgo by hand and hand it the same plugin list
-  // svgx defaults to (DEFAULT_SVGO_PLUGINS in src/index.ts) — otherwise the two
+  // svgee defaults to (DEFAULT_SVGO_PLUGINS in src/index.ts) — otherwise the two
   // SVGO rows would be running different amounts of work.
   //
   // @svgr/plugin-svgo depends on svgo ^3, so without the `overrides` entry in
-  // package.json it would bring its own svgo 3.x while svgx uses the project's
+  // package.json it would bring its own svgo 3.x while svgee uses the project's
   // svgo 4.x — same settings, different engine. The override pins both to one
   // copy so the two SVGO rows really are the same optimizer.
   const SVGO_CONFIG = { plugins: ["preset-default", "prefixIds"] };
@@ -80,13 +80,13 @@ function buildPlugins(): PluginEntry[] {
 
   return [
     {
-      name: "svgx (svgo)",
-      load: (id: string) => (svgxWithSvgo.load as Function).call({}, id),
+      name: "svgee (svgo)",
+      load: (id: string) => (svgeeWithSvgo.load as Function).call({}, id),
       query: "?react",
     },
     {
-      name: "svgx (no svgo)",
-      load: (id: string) => (svgxNoSvgo.load as Function).call({}, id),
+      name: "svgee (no svgo)",
+      load: (id: string) => (svgeeNoSvgo.load as Function).call({}, id),
       query: "?react",
     },
     {
@@ -210,8 +210,8 @@ async function main() {
 
   // Speedups, computed here so the README never has to divide by hand.
   const PAIRS = [
-    { label: "no svgo", fast: "svgx (no svgo)", slow: "svgr (jsx only)" },
-    { label: "svgo", fast: "svgx (svgo)", slow: "svgr (svgo)" },
+    { label: "no svgo", fast: "svgee (no svgo)", slow: "svgr (jsx only)" },
+    { label: "svgo", fast: "svgee (svgo)", slow: "svgr (svgo)" },
   ];
   const speedup: Record<string, Record<string, number>> = {};
   for (const pair of PAIRS) {
@@ -223,7 +223,7 @@ async function main() {
     }
   }
 
-  console.log("\n  speedup (median svgr ÷ median svgx)");
+  console.log("\n  speedup (median svgr ÷ median svgee)");
   for (const pair of PAIRS) {
     for (const svg of svgs) {
       console.log(

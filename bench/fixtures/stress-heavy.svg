@@ -275,7 +275,7 @@
       BENCHMARK STRESS TEST
     </text>
     <text x="0" y="40" font-size="14" fill="#666" font-family="monospace" text-anchor="middle" letter-spacing="4" dominant-baseline="central" font-style="italic" text-rendering="optimizeLegibility">
-      &#x2014; vite-svgx-plugin vs vite-react-svg vs vite-plugin-svgr &#x2014;
+      &#x2014; vite-svgee-plugin vs vite-react-svg vs vite-plugin-svgr &#x2014;
     </text>
   </g>
 </svg>

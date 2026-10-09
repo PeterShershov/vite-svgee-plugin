@@ -7,37 +7,37 @@ import {
   doesNotMatch,
   doesNotThrow,
 } from "node:assert";
-import svgx from "../src/index.ts";
+import svgee from "../src/index.ts";
 import { loadSvg, loadRaw, asFunctionBody } from "./helpers.ts";
 
-describe("vite-svgx-plugin", () => {
+describe("vite-svgee-plugin", () => {
   describe("plugin metadata", () => {
     it("has the correct name", () => {
-      const plugin = svgx();
-      strictEqual(plugin.name, "vite-svgx-plugin");
+      const plugin = svgee();
+      strictEqual(plugin.name, "vite-svgee-plugin");
     });
 
     it("enforces pre", () => {
-      const plugin = svgx();
+      const plugin = svgee();
       strictEqual(plugin.enforce, "pre");
     });
   });
 
   describe("load hook — filtering", () => {
     it("returns undefined for non-svg files", () => {
-      const plugin = svgx();
+      const plugin = svgee();
       const result = (plugin.load as Function).call({}, "/foo/bar.ts");
       strictEqual(result, undefined);
     });
 
     it("returns undefined for svg without ?react query", () => {
-      const plugin = svgx();
+      const plugin = svgee();
       const result = (plugin.load as Function).call({}, "/foo/bar.svg");
       strictEqual(result, undefined);
     });
 
     it("returns undefined for non-jsx query", () => {
-      const plugin = svgx();
+      const plugin = svgee();
       const result = (plugin.load as Function).call({}, "/foo/bar.svg?url");
       strictEqual(result, undefined);
     });

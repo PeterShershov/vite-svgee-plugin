@@ -25,7 +25,7 @@
     ]
   },
   "results": {
-    "svgx (svgo)": {
+    "svgee (svgo)": {
       "medium-icons.svg": {
         "mean": 0.856,
         "median": 0.825,
@@ -55,7 +55,7 @@
         "p95": 0.116
       }
     },
-    "svgx (no svgo)": {
+    "svgee (no svgo)": {
       "medium-icons.svg": {
         "mean": 0.09,
         "median": 0.086,
@@ -147,11 +147,11 @@
     }
   },
   "summary": {
-    "svgx (svgo)": {
+    "svgee (svgo)": {
       "meanOfMeans": 1.89,
       "meanOfMedians": 1.815
     },
-    "svgx (no svgo)": {
+    "svgee (no svgo)": {
       "meanOfMeans": 0.246,
       "meanOfMedians": 0.189
     },

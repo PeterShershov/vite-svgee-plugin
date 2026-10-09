@@ -1,10 +1,10 @@
-[![CI](https://github.com/PeterShershov/vite-svgx-plugin/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/PeterShershov/vite-svgx-plugin/actions/workflows/ci.yml)
+[![CI](https://github.com/PeterShershov/vite-svgee-plugin/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/PeterShershov/vite-svgee-plugin/actions/workflows/ci.yml)
 
 <p align="center">
-  <img src="./svgx-logo.svg" alt="vite-svgx-plugin" width="200" />
+  <img src="./svgee-logo.svg" alt="vite-svgee-plugin" width="200" />
 </p>
 
-# vite-svgx-plugin
+# vite-svgee-plugin
 
 Import SVG files as React components in Vite with zero runtime overhead.
 
@@ -20,27 +20,27 @@ Requires **Vite ≥ 7**.
 
 ```ts
 // vite.config.ts
-import svgx from "vite-svgx-plugin";
+import svgee from "vite-svgee-plugin";
 
-export default defineConfig({ plugins: [svgx()] });
+export default defineConfig({ plugins: [svgee()] });
 ```
 
 Each imported SVG is typed as `(props: SVGProps<SVGSVGElement>) => ReactNode`. Pull in the ambient declaration for `*.svg?react` the same way you would `vite/client` - either in a `.d.ts` file:
 
 ```ts
-/// <reference types="vite-svgx-plugin/client" />
+/// <reference types="vite-svgee-plugin/client" />
 ```
 
 or via `compilerOptions.types` in your `tsconfig.json`:
 
 ```json
-{ "compilerOptions": { "types": ["vite-svgx-plugin/client"] } }
+{ "compilerOptions": { "types": ["vite-svgee-plugin/client"] } }
 ```
 
 ## Options
 
 ```ts
-svgx({
+svgee({
   svgo: {
     /* SVGO config */
   }, // or false to disable. Requires `svgo` to be installed.
@@ -82,7 +82,7 @@ A static lookup table (~200 entries) maps HTML/SVG attribute names to their Reac
 
 ## Benchmark
 
-> **TL;DR: on default settings svgx converts a typical icon in ~0.071 ms against svgr's ~0.38 ms — about 5× faster. With SVGO off on both sides, ~0.021 ms against ~0.33 ms — about 16×.**
+> **TL;DR: on default settings svgee converts a typical icon in ~0.071 ms against svgr's ~0.38 ms — about 5× faster. With SVGO off on both sides, ~0.021 ms against ~0.33 ms — about 16×.**
 
 Each plugin converts the same four SVG files 1,000 times. We take the middle time of those runs, so one slow run cannot skew the result.
 
@@ -92,7 +92,7 @@ Time to convert one file, in milliseconds.
 
 Without SVGO:
 
-| File               | svgx      | svgr  | speedup |
+| File               | svgee     | svgr  | speedup |
 | ------------------ | --------- | ----- | ------- |
 | `tiny.svg`         | **0.021** | 0.327 | 15.6×   |
 | `small-icon.svg`   | **0.021** | 0.328 | 15.6×   |
@@ -101,7 +101,7 @@ Without SVGO:
 
 With SVGO - using the same SVGO settings:
 
-| File               | svgx      | svgr   | speedup |
+| File               | svgee     | svgr   | speedup |
 | ------------------ | --------- | ------ | ------- |
 | `tiny.svg`         | **0.071** | 0.381  | 5.4×    |
 | `small-icon.svg`   | **0.154** | 0.467  | 3.0×    |

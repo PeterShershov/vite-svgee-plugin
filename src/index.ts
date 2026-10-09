@@ -4,7 +4,7 @@ import { parse } from "./parse.ts";
 import { generateComponent } from "./generate.ts";
 import type { Plugin } from "vite";
 
-export interface SvgxOptions {
+export interface SvgeeOptions {
   /** SVGO config object, or `false` to disable. Requires `svgo` to be installed. */
   svgo?: Record<string, unknown> | false;
   /** Wrap generated components with React.forwardRef, forwarding ref to the root svg element. */
@@ -44,7 +44,7 @@ function parseSvgRequest(id: string): string | null {
   return filepath;
 }
 
-export default function svgx(options?: SvgxOptions): Plugin {
+export default function svgee(options?: SvgeeOptions): Plugin {
   const svgoConfig = options?.svgo;
   const optimize = svgoConfig !== false ? loadSvgo() : undefined;
   const useForwardRef = options?.forwardRef ?? false;
@@ -52,7 +52,7 @@ export default function svgx(options?: SvgxOptions): Plugin {
   const dimensions = options?.dimensions ?? true;
 
   return {
-    name: "vite-svgx-plugin",
+    name: "vite-svgee-plugin",
     enforce: "pre",
 
     async resolveId(source, importer) {

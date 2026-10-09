@@ -1,10 +1,10 @@
 import { resolve } from "node:path";
-import svgx from "../src/index.ts";
-import type { SvgxOptions } from "../src/index.ts";
+import svgee from "../src/index.ts";
+import type { SvgeeOptions } from "../src/index.ts";
 
 /** Call the plugin's load hook directly. Paths are relative to the repo root. */
-export function loadSvg(filepath: string, options?: SvgxOptions): string {
-  const plugin = svgx(options);
+export function loadSvg(filepath: string, options?: SvgeeOptions): string {
+  const plugin = svgee(options);
   const abs = resolve(filepath);
   const result = (plugin.load as Function).call({}, abs + "?react");
   return result.code;

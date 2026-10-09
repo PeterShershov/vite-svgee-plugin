@@ -1,16 +1,16 @@
 {
-  "name": "vite-svgx-plugin",
+  "name": "vite-svgee-plugin",
   "version": "1.0.0",
   "description": "Import SVG files as React components in Vite with zero runtime overhead.",
   "license": "MIT",
   "author": "Peter Shershov",
-  "homepage": "https://github.com/PeterShershov/vite-svgx-plugin#readme",
+  "homepage": "https://github.com/PeterShershov/vite-svgee-plugin#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PeterShershov/vite-svgx-plugin.git"
+    "url": "git+https://github.com/PeterShershov/vite-svgee-plugin.git"
   },
   "bugs": {
-    "url": "https://github.com/PeterShershov/vite-svgx-plugin/issues"
+    "url": "https://github.com/PeterShershov/vite-svgee-plugin/issues"
   },
   "keywords": [
     "vite",

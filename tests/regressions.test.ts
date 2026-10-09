@@ -9,7 +9,7 @@
 import { describe, it } from "node:test";
 import { strictEqual, notStrictEqual, ok, match, doesNotMatch, doesNotThrow } from "node:assert";
 import { readFileSync } from "node:fs";
-import svgx from "../src/index.ts";
+import svgee from "../src/index.ts";
 import { parse } from "../src/parse.ts";
 import { generateComponent } from "../src/generate.ts";
 import { loadSvg, loadRaw, asFunctionBody } from "./helpers.ts";
@@ -180,7 +180,7 @@ describe("upstream vite-plugin-svgr issues", () => {
   describe("#110, #127 — plain SVG imports stay assets", () => {
     // Only `?react` is claimed, so `import url from './x.svg'` keeps working
     // and the file is still emitted by Vite's asset pipeline.
-    const plugin = svgx();
+    const plugin = svgee();
 
     for (const id of [
       "/foo/bar.svg",
@@ -216,7 +216,7 @@ describe("upstream vite-plugin-svgr issues", () => {
     }
 
     it("resolves the bare file path and re-appends ?react", async () => {
-      const plugin = svgx();
+      const plugin = svgee();
       const { ctx, calls } = stubContext();
       const resolved = await (plugin.resolveId as Function).call(
         ctx,
@@ -229,7 +229,7 @@ describe("upstream vite-plugin-svgr issues", () => {
     });
 
     it("delegates root-absolute (publicDir style) paths to Vite", async () => {
-      const plugin = svgx();
+      const plugin = svgee();
       const { ctx, calls } = stubContext();
       const resolved = await (plugin.resolveId as Function).call(
         ctx,
@@ -241,7 +241,7 @@ describe("upstream vite-plugin-svgr issues", () => {
     });
 
     it("ignores sources without ?react", async () => {
-      const plugin = svgx();
+      const plugin = svgee();
       const { ctx, calls } = stubContext();
       strictEqual(
         await (plugin.resolveId as Function).call(ctx, "./icons/spinner.svg", "/root/src/App.tsx"),
