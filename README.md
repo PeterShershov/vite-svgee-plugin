@@ -1,4 +1,5 @@
 [![CI](https://github.com/PeterShershov/vite-svgee-plugin/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/PeterShershov/vite-svgee-plugin/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/vite-svgee-plugin)](https://www.npmjs.com/package/vite-svgee-plugin)
 
 <p align="center">
   <img src="./svgee-logo.svg" alt="vite-svgee-plugin" width="200" />
@@ -17,6 +18,16 @@ import ArrowLeft from "./icons/arrow-left.svg?react";
 ## Setup
 
 Requires **Vite ≥ 7**.
+
+```sh
+npm i -D vite-svgee-plugin
+```
+
+To optimize SVGs with [SVGO](https://github.com/svg/svgo), install it too. The plugin uses it automatically when it is installed:
+
+```sh
+npm i -D svgo
+```
 
 ```ts
 // vite.config.ts
