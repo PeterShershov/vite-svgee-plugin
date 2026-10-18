@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@svgr/plugin-svgo": "^8.1.0",
-    "@types/node": "^26.6.4",
+    "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",
     "svgo": "^4.1.0",
     "typescript": "~7.0.2",
