@@ -1,6 +1,6 @@
 {
   "name": "vite-svgee-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Import SVG files as React components in Vite with zero runtime overhead.",
   "license": "MIT",
   "author": "Peter Shershov",
